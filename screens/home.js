@@ -1,13 +1,12 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState } from 'react';
 import {View, Text, TouchableOpacity, Button, Image, ScrollView} from 'react-native';
 import tw from 'twrnc';
 import { storyData, Post } from '../constants/homeConst';
 import { Svg, Circle, Defs, LinearGradient, Stop, Path } from 'react-native-svg';
+import DoubleClick from 'react-native-double-tap';
+
 
 export default function HomeScreen({ navigation }){
-  const pressHandler = () => {
-    navigation.navigate('About')
-  }
   const fomartNumber = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
@@ -26,6 +25,18 @@ export default function HomeScreen({ navigation }){
   
     setPosts(updatedPosts);
   };
+  const handleDoubleTap = (index) => {
+    const updatedPosts = [...posts];
+    updatedPosts[index].liked = !updatedPosts[index].liked;
+    
+    if (updatedPosts[index].liked) {
+      updatedPosts[index].likes += 1; // Increase likes if the post is liked
+    } else {
+      updatedPosts[index].likes -= 1; // Decrease likes if the post is unliked
+    }
+    
+    setPosts(updatedPosts);
+  };
 
 const handleStoryPress = (index) => {
   const updatedStories = stories.map((story, i) => ({
@@ -33,7 +44,7 @@ const handleStoryPress = (index) => {
     active: i === index ? 0 : story.active,
   }));
   setStories(updatedStories);
-  console.log(updatedStories);
+  navigation.navigate('Stories', { stories: updatedStories, currentIndex: index });
 };
 
   return (
@@ -98,7 +109,7 @@ const handleStoryPress = (index) => {
         {
           Post.map((post, index) => {
             return (
-            <View style= {tw`border-t-2 border-b-2 border-[#DDDDDD] py-4`}>
+            <View style= {tw`border-t-2 border-b-2 border-[#DDDDDD] py-4`} key={index}>
               <View style={tw `flex flex-row justify-between mb-4 px-3`}>
                 <View style={tw `flex flex-row items-center`}>
                   <Image 
@@ -112,10 +123,12 @@ const handleStoryPress = (index) => {
                       style={tw`w-8 h-8`}
                     />
               </View>
-              <Image 
-                source={post.image}
-                style={ tw `w-full h-96`}
-              />
+              <DoubleClick
+                doubleTap={() => handleDoubleTap(index)} // Execute your double tap action here
+                delay={200} // Set the delay time (in milliseconds)
+              >
+                <Image source={post.image} style={tw`w-full h-96`} />
+              </DoubleClick>
               <View style={ tw `p-3`}>
                 <View style={tw `flex flex-row justify-between`}>
                   <View style={tw `flex flex-row items-center`}>

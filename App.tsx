@@ -5,6 +5,7 @@ import Explore from './screens/explore';
 import Create from './screens/create';
 import  Notify from './screens/notify';
 import Personal from './screens/personal';
+import Stories from './screens/stories';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, View , StyleSheet} from 'react-native';
@@ -14,34 +15,43 @@ const Tab = createBottomTabNavigator();
 export default function App(){
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName='Home'
-        screenOptions={({route}) => ({
-          title: "",
-          headerShown: false,
-          tabBarIcon: ({focused}) => {
-            let iconName
-            if(route.name === "Home"){
-              iconName = focused ? require("./assets/images/icon-home-active.png") : require("./assets/images/icon-home.png")
-            }else if(route.name === "Explore"){
-              iconName = focused ? require("./assets/images/icon-explore-active.png") : require("./assets/images/icon-explore.png")
-            }else if(route.name === "Create"){
-              iconName = require("./assets/images/icon-create.png")
-            }else if(route.name === "Notify"){
-              iconName = focused ? require("./assets/images/icon-noti-active.png") : require("./assets/images/icon-noti.png")
-            }else{
-              iconName = require("./assets/images/icon-personal.png")
-            }
-             return <Image source={iconName} style={tw `w-20 h-full mt-4`}/>
-          }
-        })}
-        >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Explore" component={Explore} />
-        <Tab.Screen name="Create" component={Create} />
-        <Tab.Screen name="Notify" component={Notify} />
-        <Tab.Screen name="Personal" component={Personal} />
-      </Tab.Navigator>
+       <Stack.Navigator initialRouteName="Tabs" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Tabs" component={Navigator} />
+        <Stack.Screen name="Stories" component={Stories} />
+      </Stack.Navigator>
     </NavigationContainer>
+  )
+}
+
+const Navigator = () => {
+  return (
+      <Tab.Navigator
+  initialRouteName='Home'
+  screenOptions={({route}) => ({
+    title: "",
+    headerShown: false,
+    tabBarIcon: ({focused}) => {
+      let iconName
+      if(route.name === "Home"){
+        iconName = focused ? require("./assets/images/icon-home-active.png") : require("./assets/images/icon-home.png")
+      }else if(route.name === "Explore"){
+        iconName = focused ? require("./assets/images/icon-explore-active.png") : require("./assets/images/icon-explore.png")
+      }else if(route.name === "Create"){
+        iconName = require("./assets/images/icon-create.png")
+      }else if(route.name === "Notify"){
+        iconName = focused ? require("./assets/images/icon-noti-active.png") : require("./assets/images/icon-noti.png")
+      }else{
+        iconName = require("./assets/images/icon-personal.png")
+      }
+       return <Image source={iconName} style={tw `w-20 h-full mt-4`}/>
+    }
+  })}
+  >
+  <Tab.Screen name="Home" component={Home} />
+  <Tab.Screen name="Explore" component={Explore} />
+  <Tab.Screen name="Create" component={Create} />
+  <Tab.Screen name="Notify" component={Notify} />
+  <Tab.Screen name="Personal" component={Personal} />
+</Tab.Navigator>
   )
 }
