@@ -4,7 +4,7 @@ import tw from 'twrnc';
 import { storyData, Post } from '../constants/homeConst';
 import { Svg, Circle, Defs, LinearGradient, Stop, Path } from 'react-native-svg';
 import DoubleClick from 'react-native-double-tap';
-
+import Swiper from 'react-native-swiper'
 
 export default function HomeScreen({ navigation }){
   const fomartNumber = (number) => {
@@ -123,12 +123,20 @@ const handleStoryPress = (index) => {
                       style={tw`w-8 h-8`}
                     />
               </View>
-              <DoubleClick
-                doubleTap={() => handleDoubleTap(index)} // Execute your double tap action here
-                delay={200} // Set the delay time (in milliseconds)
-              >
-                <Image source={post.image} style={tw`w-full h-96`} />
-              </DoubleClick>
+                <Swiper style={{ height: 450 }} showsButtons={false} loop={false}>
+                  {
+                    post.image.map((imgs, imgsIndex) => {
+                      return(
+                        <DoubleClick
+                        doubleTap={() => handleDoubleTap(index)} // Execute your double tap action here
+                        delay={200} // Set the delay time (in milliseconds)
+                      >
+                          <Image source={imgs.img} style={{ height: 450, width: '100%' }} key={imgsIndex} />
+                        </DoubleClick>
+                      )
+                    })
+                  }
+                </Swiper>
               <View style={ tw `p-3`}>
                 <View style={tw `flex flex-row justify-between`}>
                   <View style={tw `flex flex-row items-center`}>

@@ -22,7 +22,7 @@ export default function Stories({ route }) {
             setCurrentPersonIndex(currentPersonIndex + 1);
             setCurrentStoryIndex(0);
         } else {
-    
+            navigation.goBack();
         }
     };
     const progress = useRef(new Animated.Value(0)).current
@@ -82,7 +82,9 @@ export default function Stories({ route }) {
                                 height: 3,
                                 backgroundColor: 'rgba(255, 255, 255, .5)',
                                 marginLeft: 5
-                             }}>
+                             }}
+                                key={index}
+                                >
                                 <Animated.View style={{ 
                                     flex: currentStoryIndex === index ? progress : storyData[currentPersonIndex].storyDetail[index].finish,
                                     height: 3,

@@ -46,13 +46,13 @@ export const storyData = [
         active: 1,
         storyDetail: [
             {
-                content: require('../assets/images/ins-story-1.jpg'),
+                content: require('../assets/images/ins-story-3-a.jpg'),
                 type: 'image',
                 time: 4,
                 finish: 0
             },
             {
-                content: require('../assets/images/ins-post-1.jpg'),
+                content: require('../assets/images/ins-story-3-b.jpg'),
                 type: 'image',
                 time: 2,
                 finish: 0
@@ -66,13 +66,13 @@ export const storyData = [
         active: 1,
         storyDetail: [
             {
-                content: require('../assets/images/ins-story-1.jpg'),
+                content: require('../assets/images/ins-story-4-a.jpg'),
                 type: 'image',
                 time: 2,
                 finish: 0
             },
             {
-                content: require('../assets/images/ins-post-1.jpg'),
+                content: require('../assets/images/ins-story-4-b.jpg'),
                 type: 'image',
                 time: 1,
                 finish: 0
@@ -86,17 +86,11 @@ export const storyData = [
         active: 1,
         storyDetail: [
             {
-                content: require('../assets/images/ins-story-1.jpg'),
+                content: require('../assets/images/ins-story-5-a.jpg'),
                 type: 'image',
                 time: 6,
                 finish: 0
             },
-            {
-                content: require('../assets/images/ins-post-1.jpg'),
-                type: 'image',
-                time: 2,
-                finish: 0
-            }
         ] 
     },
     {
@@ -106,17 +100,11 @@ export const storyData = [
         active: 1,
         storyDetail: [
             {
-                content: require('../assets/images/ins-story-1.jpg'),
+                content: require('../assets/images/ins-story-6-a.jpg'),
                 type: 'image',
                 time: 2,
                 finish: 0
             },
-            {
-                content: require('../assets/images/ins-post-1.jpg'),
-                type: 'image',
-                time: 1,
-                finish: 0
-            }
         ] 
     },
 ]
@@ -125,7 +113,17 @@ export const Post = [
     {
         name: 'leomessi',
         avatar: require('../assets/images/ins-avt-1.jpg'),
-        image: require('../assets/images/ins-post-1.jpg'),
+        image: [
+            {
+              img: require('../assets/images/ins-post-1.jpg')
+            },
+            {
+                img: require('../assets/images/ins-post-1-b.jpg')
+            },
+            {
+                img: require('../assets/images/ins-post-1-c.jpg')
+            },
+        ],
         likes: 123504568,
         status: 'CAMPEONES DEL MUNDO!!!!!!! 🌎🏆',
         comment: 1325324,
@@ -134,7 +132,14 @@ export const Post = [
     {
         name: 'cristiano',
         avatar: require('../assets/images/ins-avt-2.jpg'),
-        image: require('../assets/images/ins-post-2.jpeg'),
+        image: [
+            {
+              img: require('../assets/images/ins-post-2.jpeg')
+            },
+            {
+                img: require('../assets/images/ins-post-2-b.png')
+            },
+        ],
         likes: 1466568,
         status: 'Siuuuuuuu!!!!!!!',
         comment: 1325324,
@@ -143,7 +148,14 @@ export const Post = [
     {
         name: 'neymarjr',
         avatar: require('../assets/images/ins-avt-3.jpg'),
-        image: require('../assets/images/ins-post-3.jpeg'),
+        image: [
+            {
+              img: require('../assets/images/ins-post-3.jpeg')
+            },
+            {
+                img: require('../assets/images/ins-post-3.jpeg')
+            },
+        ],
         likes: 1243568,
         status: 'Money money JR...',
         comment: 1325324,
@@ -152,7 +164,14 @@ export const Post = [
     {
         name: 'mbappe',
         avatar: require('../assets/images/ins-avt-4.jpg'),
-        image: require('../assets/images/ins-post-4.jpg'),
+        image: [
+            {
+              img: require('../assets/images/ins-post-4.jpg')
+            },
+            {
+                img: require('../assets/images/ins-post-4.jpg')
+            },
+        ],
         likes: 1325656,
         status: 'New president !!!',
         comment: 1325324,
@@ -161,7 +180,14 @@ export const Post = [
     {
         name: 'davidbeckham',
         avatar: require('../assets/images/ins-avt-5.jpg'),
-        image: require('../assets/images/ins-post-5.jpg'),
+        image: [
+            {
+              img: require('../assets/images/ins-post-5.jpg')
+            },
+            {
+                img: require('../assets/images/ins-post-5.jpg')
+            },
+        ],
         likes: 2250456,
         status: 'Handsome is wrong ?',
         comment: 1325324,
@@ -170,7 +196,12 @@ export const Post = [
     {
         name: 'iamzlatanibrahimovic',
         avatar: require('../assets/images/ins-avt-6.jpg'),
-        image: require('../assets/images/ins-post-6.jpg'),
+        image: [
+            {
+              img: require('../assets/images/ins-post-6.jpg')
+            },
+            
+        ],
         likes: 2345568,
         status: 'Zlatan is not God, God is Zalatan',
         comment: 1325324,
